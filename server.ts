@@ -1,4 +1,4 @@
-function handleRequest(request) {
+function handleRequest(request: Request): Response{
   const { pathname } = new URL(request.url);
 
   // Respond with HTML
@@ -30,6 +30,13 @@ function handleRequest(request) {
       },
     });
   }
+
+  return new Response("type not specified", {
+    headers: {
+      "content-type": "text/plain"
+    }, 
+    status: 400
+  })
 }
 
 addEventListener("fetch", (event) => {
